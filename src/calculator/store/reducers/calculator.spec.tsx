@@ -15,7 +15,7 @@ describe('CalculatorReducer', () => {
   describe('ADD_DIGIT action', () => {
     it('should add the digit to the operation label', () => {
       const { initialState } = fromCalculator;
-      const action = new fromActions.AddDigit(5);
+      const action = new fromActions.AddDigit('5');
       const state = fromCalculator.reducer(initialState, action);
 
       expect(state.operation).toBe('5');

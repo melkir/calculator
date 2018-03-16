@@ -1,61 +1,38 @@
-import * as React from 'react';
+import { Calculator } from '../../components';
+import * as actions from '../../store/actions/';
+import { CalculatorState } from '../../store/types';
+import { connect, Dispatch } from 'react-redux';
 
-import { Screen, Button } from '../../components';
+import { Operator, Digit } from '../../models';
 
-export const PanelLabels = {
-  left: ['7', '8', '9', '4', '5', '6', '1', '2', '3', '.', '0', 'C'],
-  right: ['/', '*', '-', '+'],
-};
-
-export interface Props {
-  onCompute?: () => void;
-  onClear?: () => void;
+export function mapStateToProps({
+  operation,
+  result,
+  previousResults,
+  historyVisible,
+}: CalculatorState) {
+  return {
+    operation,
+    result,
+    previousResults,
+    historyVisible,
+  };
 }
 
-export function Calculator(props: Props) {
-  return (
-    <div className="max-w-lg m-auto rounded overflow-hidden shadow-md mt-8 border">
-      <div className="p-2">
-        <Screen />
-      </div>
-      <div className="flex flex-row">
-        {/* Left Panel */}
-        <div className="flex flex-wrap w-2/3">
-          {PanelLabels.left.map(value => {
-            return (
-              <Button
-                key={value}
-                className="w-1/3 bg-grey-lightest hover:bg-grey-lighter h-15"
-                value={value}
-                onClick={() => console.log('key', value)}
-              />
-            );
-          })}
-        </div>
-        {/* Right Panel */}
-        <div className="flex flex-wrap w-1/3">
-          {PanelLabels.right.map(value => {
-            return (
-              <Button
-                className="w-full bg-grey-lighter hover:bg-grey-light h-12"
-                key={value}
-                value={operatorToString(value)}
-                onClick={() => console.log('operator', value)}
-              />
-            );
-          })}
-          <Button
-            className="w-full bg-grey-light hover:bg-grey h-12"
-            value="="
-            onClick={() => console.log('operator', 'equal')}
-          />
-        </div>
-      </div>
-    </div>
-  );
+export function mapDispatchToProps(
+  dispatch: Dispatch<actions.CalculatorActions>
+) {
+  return {
+    onCompute: () => dispatch({ ...new actions.ComputeResult() }),
+    onClear: () => dispatch({ ...new actions.ClearScreen() }),
+    onDigit: (digit: Digit) => dispatch({ ...new actions.AddDigit(digit) }),
+    onOperator: (operator: Operator) =>
+      dispatch({ ...new actions.AddOperator(operator) }),
+    onComma: () => dispatch({ ...new actions.AddComma() }),
+    onUnleashMonkeys: () => dispatch({ ...new actions.UnleashMonkey() }),
+    onStopMonkeys: () => dispatch({ ...new actions.StopMonkey() }),
+    // onToggleHistory: () => store.dispatch({...new actions.ToggleHistory()}),
+  };
 }
 
-// Handle the special case to correctly display the operator multiply
-function operatorToString(operator: string): string {
-  return operator === '*' ? 'x' : operator;
-}
+export default connect(mapStateToProps, mapDispatchToProps)(Calculator);

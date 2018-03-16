@@ -3,7 +3,15 @@ import * as ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-import { Calculator } from './calculator/containers/calculator/calculator';
+import { Provider } from 'react-redux';
+import { store } from './calculator/store';
 
-ReactDOM.render(<Calculator />, document.getElementById('root') as HTMLElement);
+import Calculator from './calculator/containers/calculator/calculator';
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Calculator />
+  </Provider>,
+  document.getElementById('root') as HTMLElement
+);
 registerServiceWorker();

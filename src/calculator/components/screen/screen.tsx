@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-interface Props {
-  operation?: string;
-  result?: string;
+export interface Props {
+  operation: string;
+  result: string;
 }
 
 export function Screen({ operation = '', result = '' }: Props) {

@@ -3,11 +3,11 @@ import * as fromCalculator from './calculator';
 describe('Calculator Actions', () => {
   describe('AddDigit', () => {
     it('should create an action', () => {
-      const payload = 1;
+      const payload = '1';
       const action = new fromCalculator.AddDigit(payload);
       expect({ ...action }).toEqual({
         type: fromCalculator.ADD_DIGIT,
-        payload
+        payload,
       });
     });
   });
@@ -17,7 +17,7 @@ describe('Calculator Actions', () => {
       const action = new fromCalculator.AddOperator(payload);
       expect({ ...action }).toEqual({
         type: fromCalculator.ADD_OPERATOR,
-        payload
+        payload,
       });
     });
   });
@@ -25,7 +25,7 @@ describe('Calculator Actions', () => {
     it('should create an action', () => {
       const action = new fromCalculator.AddComma();
       expect({ ...action }).toEqual({
-        type: fromCalculator.ADD_COMMA
+        type: fromCalculator.ADD_COMMA,
       });
     });
   });
@@ -33,7 +33,7 @@ describe('Calculator Actions', () => {
     it('should create an action', () => {
       const action = new fromCalculator.ClearScreen();
       expect({ ...action }).toEqual({
-        type: fromCalculator.CLEAR_SCREEN
+        type: fromCalculator.CLEAR_SCREEN,
       });
     });
   });
@@ -41,7 +41,7 @@ describe('Calculator Actions', () => {
     it('should create an action', () => {
       const action = new fromCalculator.ComputeResult();
       expect({ ...action }).toEqual({
-        type: fromCalculator.COMPUTE_RESULT
+        type: fromCalculator.COMPUTE_RESULT,
       });
     });
   });
@@ -49,7 +49,7 @@ describe('Calculator Actions', () => {
     it('should create an action', () => {
       const action = new fromCalculator.UnleashMonkey();
       expect({ ...action }).toEqual({
-        type: fromCalculator.UNLEASH_MONKEYS
+        type: fromCalculator.UNLEASH_MONKEYS,
       });
     });
   });
@@ -57,7 +57,7 @@ describe('Calculator Actions', () => {
     it('should create an action', () => {
       const action = new fromCalculator.StopMonkey();
       expect({ ...action }).toEqual({
-        type: fromCalculator.STOP_MONKEYS
+        type: fromCalculator.STOP_MONKEYS,
       });
     });
   });
