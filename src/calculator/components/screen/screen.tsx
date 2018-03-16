@@ -9,7 +9,7 @@ export interface Props {
 export function Screen({ operation = '', result = '' }: Props) {
   return (
     <div className="flex flex-col">
-      <input type="text" readOnly={true} value={operation} />
+      <input type="text" readOnly={true} value={operationToString(operation)} />
       <input
         type="text"
         readOnly={true}
@@ -17,4 +17,8 @@ export function Screen({ operation = '', result = '' }: Props) {
       />
     </div>
   );
+}
+
+function operationToString(operation: string) {
+  return operation.replace(/\*/g, 'x');
 }

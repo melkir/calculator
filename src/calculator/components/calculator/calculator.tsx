@@ -4,7 +4,7 @@ import { Button } from '../../components/button/button';
 
 export const PanelLabels = {
   left: ['7', '8', '9', '4', '5', '6', '1', '2', '3', '.', '0', 'C'],
-  right: ['/', '*', '-', '+'],
+  right: ['/', 'x', '-', '+'],
 };
 
 export interface Props {
@@ -47,7 +47,7 @@ export function Calculator(props: Props) {
               <Button
                 className="w-full bg-grey-lighter hover:bg-grey-light h-12"
                 key={value}
-                value={operatorToString(value)}
+                value={value}
                 onClick={() => onTapKey(value, props)}
               />
             );
@@ -68,12 +68,12 @@ function onTapKey(
   { onDigit, onOperator, onComma, onCompute, onClear }: Props
 ) {
   const digitRegex = /^[0-9]$/;
-  const operatorRegex = /^[\*\+\-\/]$/;
+  const operatorRegex = /^[\x\+\-\/]$/;
 
   if (digitRegex.test(key)) {
     onDigit(key);
   } else if (operatorRegex.test(key)) {
-    onOperator(key);
+    onOperator(key === 'x' ? '*' : key);
   } else if ('.' === key) {
     onComma();
   } else if ('=' === key) {
@@ -83,9 +83,4 @@ function onTapKey(
   } else {
     throw `Invalid key pressed ${key}`;
   }
-}
-
-// Handle the special case to correctly display the operator multiply
-function operatorToString(operator: string): string {
-  return operator === '*' ? 'x' : operator;
 }
