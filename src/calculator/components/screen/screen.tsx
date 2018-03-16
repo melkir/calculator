@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './screen.css';
 
 export interface Props {
   operation: string;
