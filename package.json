@@ -15,15 +15,17 @@
   },
   "lint-staged": {
     "src/**/*.{js,ts,tsx,jsx,json,css}": [
-      "prettier --single-quote --write",
+      "prettier --single-quote --trailing-comma --write",
       "git add"
     ]
   },
   "scripts": {
     "precommit": "lint-staged",
-    "prestart": "tailwind build ./src/index.tailwind.css -c ./tailwind.js -o ./src/index.css",
+    "prestart":
+      "tailwind build ./src/index.tailwind.css -c ./tailwind.js -o ./src/index.css",
     "start": "react-scripts-ts start",
-    "prebuild": "tailwind build ./src/index.tailwind.css -c ./tailwind.js -o ./src/index.css",
+    "prebuild":
+      "tailwind build ./src/index.tailwind.css -c ./tailwind.js -o ./src/index.css",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"

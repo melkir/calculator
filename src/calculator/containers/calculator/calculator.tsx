@@ -4,7 +4,7 @@ import { Screen, Button } from '../../components';
 
 export const PanelLabels = {
   left: ['7', '8', '9', '4', '5', '6', '1', '2', '3', '.', '0', 'C'],
-  right: ['/', '*', '-', '+']
+  right: ['/', '*', '-', '+'],
 };
 
 export interface Props {
