@@ -9,7 +9,6 @@ export const PanelLabels = {
 };
 
 export interface Props {
-  onToggleMonkeys: () => void;
   onTapKey: (key: string) => void;
   onCompute: () => void;
   // onToggleHistory: () => void;
@@ -18,7 +17,7 @@ export interface Props {
 }
 
 export function Calculator(props: Props) {
-  const { onTapKey, onToggleMonkeys, onCompute, result, operation } = props;
+  const { onTapKey, onCompute, result, operation } = props;
   return (
     <div className="max-w-lg m-auto rounded overflow-hidden shadow-md mt-8 border">
       <div className="p-2">
@@ -57,7 +56,7 @@ export function Calculator(props: Props) {
           />
         </div>
       </div>
-      <Keyboard onKeySpace={onToggleMonkeys} />
+      <Keyboard />
     </div>
   );
 }

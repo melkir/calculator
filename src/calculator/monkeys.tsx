@@ -10,7 +10,7 @@ const OPERATORS = ['/', 'x', '-', '+'];
 
 export interface MonkeysProps {
   timer: NodeJS.Timer | null;
-  isMonkeysFreed: boolean;
+  toggleMonkeys: () => void;
   enclose: () => void;
   unleash: () => void;
 }
@@ -18,8 +18,10 @@ export interface MonkeysProps {
 export class Monkeys implements MonkeysProps {
   timer: NodeJS.Timer | null;
 
-  public get isMonkeysFreed(): boolean {
-    return this.timer != null;
+  public toggleMonkeys(): void {
+    const { isMonkeysFreed } = store.getState();
+    store.dispatch({ ...new actions.ToggleMonkeysStatus() });
+    isMonkeysFreed ? this.enclose() : this.unleash();
   }
 
   public unleash(): void {

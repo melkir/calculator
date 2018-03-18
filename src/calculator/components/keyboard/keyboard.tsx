@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { Monkeys } from '../../monkeys';
 
-export interface Props {
-  onKeySpace: () => void;
-}
+export interface Props {}
 
 const SPACE_KEY = 32;
 
@@ -18,10 +16,7 @@ export class Keyboard extends React.Component<Props, object> {
 
   handleKeyPress(event: KeyboardEvent) {
     if (event.keyCode === SPACE_KEY) {
-      this.props.onKeySpace();
-      this.monkeys.isMonkeysFreed
-        ? this.monkeys.enclose()
-        : this.monkeys.unleash();
+      this.monkeys.toggleMonkeys();
     }
   }
 
