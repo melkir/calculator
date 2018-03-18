@@ -89,22 +89,22 @@ describe('CalculatorReducer', () => {
       expect(state.previousResults).toBe(previousResults);
     });
   });
-  describe('UNLEASH_MONKEYS action', () => {
-    it('should generate multiple valid random computes', () => {
+  describe('TOGGLE_MONKEYS_STATUS action', () => {
+    it('should toggle the isMonkeysFreed property', () => {
       const { initialState } = fromCalculator;
-      const action = new fromActions.UnleashMonkey();
-      const state = fromCalculator.reducer(initialState, action);
+      const action = new fromActions.ToggleMonkeysStatus();
 
-      expect(state).toBeFalsy();
+      let state = fromCalculator.reducer(initialState, action);
+      expect(state.isMonkeysFreed).toBeTruthy();
     });
-  });
-  describe('STOP_MONKEYS action', () => {
-    it('should stop generating random computes', () => {
+    it('should toggle the isMonkeysFreed property', () => {
       const { initialState } = fromCalculator;
-      const action = new fromActions.StopMonkey();
-      const state = fromCalculator.reducer(initialState, action);
+      const isMonkeysFreed = true;
+      const previousState = { ...initialState, isMonkeysFreed };
+      const action = new fromActions.ToggleMonkeysStatus();
 
-      expect(state).toBeFalsy();
+      let state = fromCalculator.reducer(previousState, action);
+      expect(state.isMonkeysFreed).toBeFalsy();
     });
   });
 });

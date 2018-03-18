@@ -47,17 +47,9 @@ describe('Calculator Actions', () => {
   });
   describe('UnleashMonkey', () => {
     it('should create an action', () => {
-      const action = new fromCalculator.UnleashMonkey();
+      const action = new fromCalculator.ToggleMonkeysStatus();
       expect({ ...action }).toEqual({
-        type: fromCalculator.UNLEASH_MONKEYS,
-      });
-    });
-  });
-  describe('StopMonkey', () => {
-    it('should create an action', () => {
-      const action = new fromCalculator.StopMonkey();
-      expect({ ...action }).toEqual({
-        type: fromCalculator.STOP_MONKEYS,
+        type: fromCalculator.TOGGLE_MONKEYS_STATUS,
       });
     });
   });

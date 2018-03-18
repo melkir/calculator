@@ -31,15 +31,10 @@ export class ComputeResult implements Action {
   readonly type = COMPUTE_RESULT;
 }
 
-export const UNLEASH_MONKEYS = '[Calculator] Unleash the monkeys';
-export const STOP_MONKEYS = '[Calculator] Stop the monkeys';
+export const TOGGLE_MONKEYS_STATUS = '[Calculator] Toggle monkeys status';
 
-export class UnleashMonkey implements Action {
-  readonly type = UNLEASH_MONKEYS;
-}
-
-export class StopMonkey implements Action {
-  readonly type = STOP_MONKEYS;
+export class ToggleMonkeysStatus implements Action {
+  readonly type = TOGGLE_MONKEYS_STATUS;
 }
 
 export type CalculatorActions =
@@ -48,5 +43,4 @@ export type CalculatorActions =
   | AddComma
   | ClearScreen
   | ComputeResult
-  | UnleashMonkey
-  | StopMonkey;
+  | ToggleMonkeysStatus;

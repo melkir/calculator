@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Screen } from '../../components/screen/screen';
-import { Button } from '../../components/button/button';
+import { Screen } from '../screen/screen';
+import { Button } from '../button/button';
+import { Keyboard } from '../keyboard/keyboard';
 
 export const PanelLabels = {
   left: ['7', '8', '9', '4', '5', '6', '1', '2', '3', '.', '0', 'C'],
@@ -8,23 +9,20 @@ export const PanelLabels = {
 };
 
 export interface Props {
+  onToggleMonkeys: () => void;
+  onTapKey: (key: string) => void;
   onCompute: () => void;
-  onClear: () => void;
-  onDigit: (digit: string) => void;
-  onOperator: (operator: string) => void;
-  onComma: () => void;
-  onUnleashMonkeys: () => void;
-  onStopMonkeys: () => void;
   // onToggleHistory: () => void;
   operation: string;
   result: string;
 }
 
 export function Calculator(props: Props) {
+  const { onTapKey, onToggleMonkeys, onCompute, result, operation } = props;
   return (
     <div className="max-w-lg m-auto rounded overflow-hidden shadow-md mt-8 border">
       <div className="p-2">
-        <Screen operation={props.operation} result={props.result} />
+        <Screen operation={operation} result={result} />
       </div>
       <div className="flex flex-row">
         {/* Left Panel */}
@@ -35,7 +33,7 @@ export function Calculator(props: Props) {
                 key={value}
                 className="w-1/3 bg-grey-lightest hover:bg-grey-lighter h-15"
                 value={value}
-                onClick={() => onTapKey(value, props)}
+                onClick={() => onTapKey(value)}
               />
             );
           })}
@@ -48,39 +46,18 @@ export function Calculator(props: Props) {
                 className="w-full bg-grey-lighter hover:bg-grey-light h-12"
                 key={value}
                 value={value}
-                onClick={() => onTapKey(value, props)}
+                onClick={() => onTapKey(value)}
               />
             );
           })}
           <Button
             className="w-full bg-grey-light hover:bg-grey h-12"
             value="="
-            onClick={() => onTapKey('=', props)}
+            onClick={() => onCompute()}
           />
         </div>
       </div>
+      <Keyboard onKeySpace={onToggleMonkeys} />
     </div>
   );
-}
-
-function onTapKey(
-  key: string,
-  { onDigit, onOperator, onComma, onCompute, onClear }: Props
-) {
-  const digitRegex = /^[0-9]$/;
-  const operatorRegex = /^[\x\+\-\/]$/;
-
-  if (digitRegex.test(key)) {
-    onDigit(key);
-  } else if (operatorRegex.test(key)) {
-    onOperator(key === 'x' ? '*' : key);
-  } else if ('.' === key) {
-    onComma();
-  } else if ('=' === key) {
-    onCompute();
-  } else if ('C' === key) {
-    onClear();
-  } else {
-    throw `Invalid key pressed ${key}`;
-  }
 }

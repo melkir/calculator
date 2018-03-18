@@ -3,4 +3,5 @@ export interface CalculatorState {
   result: string;
   previousResults: Array<string>;
   historyVisible: boolean;
+  isMonkeysFreed: boolean;
 }
