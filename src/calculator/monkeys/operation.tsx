@@ -1,7 +1,7 @@
 import { compute } from '../store';
 
 export const DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-export const OPERATORS = ['/', 'x', '-', '+'];
+export const OPERATORS = ['/', '*', '-', '+'];
 export const DIGITS_COMMA = [...DIGITS, '.'];
 
 export class Operation {

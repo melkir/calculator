@@ -39,12 +39,12 @@ export class ToggleMonkeysStatus implements Action {
 
 export function onTapKey(key: string) {
   const digitRegex = /^[0-9]$/;
-  const operatorRegex = /^[x+\-\/]$/;
+  const operatorRegex = /^[x*+\-\/]$/;
 
   if (digitRegex.test(key)) {
     return new AddDigit(key as Digit);
   } else if (operatorRegex.test(key)) {
-    const operator = key === 'x' ? '*' : (key as Operator);
+    const operator = (key === 'x' ? '*' : key) as Operator;
     return new AddOperator(operator);
   } else if ('.' === key) {
     return new AddComma();

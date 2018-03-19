@@ -86,5 +86,12 @@ describe('Calculator Actions', () => {
       const action = fromCalculator.onTapKey('.');
       expect({ ...action }).toEqual({ type: fromCalculator.ADD_COMMA });
     });
+    it('should allow (x) or (*) key', () => {
+      const action = fromCalculator.onTapKey('*');
+      expect({ ...action }).toEqual({
+        type: fromCalculator.ADD_OPERATOR,
+        payload: '*',
+      });
+    });
   });
 });
