@@ -37,6 +37,26 @@ export class ToggleMonkeysStatus implements Action {
   readonly type = TOGGLE_MONKEYS_STATUS;
 }
 
+export function onTapKey(key: string) {
+  const digitRegex = /^[0-9]$/;
+  const operatorRegex = /^[x+\-\/]$/;
+
+  if (digitRegex.test(key)) {
+    return new AddDigit(key as Digit);
+  } else if (operatorRegex.test(key)) {
+    const operator = key === 'x' ? '*' : (key as Operator);
+    return new AddOperator(operator);
+  } else if ('.' === key) {
+    return new AddComma();
+  } else if ('=' === key) {
+    return new ComputeResult();
+  } else if ('C' === key) {
+    return new ClearScreen();
+  } else {
+    throw `Invalid key pressed ${key}`;
+  }
+}
+
 export type CalculatorActions =
   | AddDigit
   | AddOperator

@@ -7,9 +7,13 @@ export interface Props {
   onClick: (value: string) => void;
 }
 
-export function Button({ value, className, onClick }: Props) {
+export default function Button({ value, className, onClick }: Props) {
   return (
-    <button className={`btn ${className}`} onClick={() => onClick(value)}>
+    <button
+      className={`btn ${className}`}
+      onClick={() => onClick(value)}
+      data-btn={value}
+    >
       {value}
     </button>
   );

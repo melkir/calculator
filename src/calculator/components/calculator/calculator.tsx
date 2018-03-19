@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Screen } from '../screen/screen';
-import { Button } from '../button/button';
-import { Keyboard } from '../keyboard/keyboard';
+import Screen from '../screen/screen';
+import Button from '../button/button';
+import Keyboard from '../keyboard/keyboard';
 
 export const PanelLabels = {
   left: ['7', '8', '9', '4', '5', '6', '1', '2', '3', '.', '0', 'C'],
@@ -32,7 +32,7 @@ export function Calculator(props: Props) {
                 key={value}
                 className="w-1/3 bg-grey-lightest hover:bg-grey-lighter h-15"
                 value={value}
-                onClick={() => onTapKey(value)}
+                onClick={onTapKey}
               />
             );
           })}
@@ -45,14 +45,14 @@ export function Calculator(props: Props) {
                 className="w-full bg-grey-lighter hover:bg-grey-light h-12"
                 key={value}
                 value={value}
-                onClick={() => onTapKey(value)}
+                onClick={onTapKey}
               />
             );
           })}
           <Button
             className="w-full bg-grey-light hover:bg-grey h-12"
             value="="
-            onClick={() => onCompute()}
+            onClick={onCompute}
           />
         </div>
       </div>

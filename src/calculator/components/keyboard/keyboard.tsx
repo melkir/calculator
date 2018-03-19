@@ -5,7 +5,7 @@ export interface Props {}
 
 const SPACE_KEY = 32;
 
-export class Keyboard extends React.Component<Props, object> {
+export default class Keyboard extends React.Component<Props, object> {
   private monkeys: Monkeys;
 
   constructor(props: Props) {

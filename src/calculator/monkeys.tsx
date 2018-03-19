@@ -1,12 +1,9 @@
-import { Dispatch } from 'react-redux';
-
 import { store, compute } from './store';
 import * as actions from './store/actions/';
 
-import { mapDispatchToProps } from './containers/calculator/calculator';
-
-const DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
+const DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const OPERATORS = ['/', 'x', '-', '+'];
+const DIGITS_COMMA = [...DIGITS, '.'];
 
 export interface MonkeysProps {
   timer: NodeJS.Timer | null;
@@ -28,10 +25,7 @@ export class Monkeys implements MonkeysProps {
     if (this.timer != null) {
       return;
     }
-    this.timer = setInterval(
-      () => this.simulateMonkeyActions(store.dispatch),
-      100
-    );
+    this.timer = setInterval(() => this.simulateMonkeyActions(), 100);
   }
 
   public enclose(): void {
@@ -42,13 +36,12 @@ export class Monkeys implements MonkeysProps {
     this.timer = null;
   }
 
-  private simulateMonkeyActions(dispatch: Dispatch<actions.CalculatorActions>) {
-    const { onClear, onCompute, onTapKey } = mapDispatchToProps(dispatch);
-    onClear();
+  private simulateMonkeyActions() {
+    store.dispatch({ ...new actions.ClearScreen() });
     this.generateValidRandomOperation()
       .split('')
-      .forEach(key => onTapKey(key));
-    onCompute();
+      .forEach(key => store.dispatch({ ...actions.onTapKey(key) }));
+    store.dispatch({ ...new actions.ComputeResult() });
   }
 
   private generateValidRandomOperation(maxNumberOfRetry: number = 100): string {
@@ -89,7 +82,8 @@ export class Monkeys implements MonkeysProps {
   private getRandomDigits(numberOfDigits: number): string {
     let result = '';
     for (let i = 0; i < numberOfDigits; i++) {
-      result += DIGITS[this.getRandomIntInclusive(0, DIGITS.length - 1)];
+      result +=
+        DIGITS_COMMA[this.getRandomIntInclusive(0, DIGITS_COMMA.length - 1)];
     }
     return result;
   }
