@@ -50,6 +50,17 @@ describe('CalculatorReducer', () => {
     });
   });
   describe('COMPUTE_RESULT action', () => {
+    describe('compute()', () => {
+      it('should compute 0 if the current operation is empty', () => {
+        expect(fromCalculator.compute('')).toBe(0);
+      });
+      it('should compute NaN if the current operation is invalid', () => {
+        expect(fromCalculator.compute('hi')).toBeNaN();
+      });
+      it('should compute NaN if the current operation raise an error', () => {
+        expect(fromCalculator.compute('0/0')).toBeNaN();
+      });
+    });
     it('should compute the result of the current operation', () => {
       const { initialState } = fromCalculator;
       const operation = '5*8+3-1';

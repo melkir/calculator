@@ -53,4 +53,38 @@ describe('Calculator Actions', () => {
       });
     });
   });
+  describe('onTapKey', () => {
+    it('should create digit action on [0-9] keys', () => {
+      const keys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+      keys.forEach(digit => {
+        const action = fromCalculator.onTapKey(digit);
+        expect({ ...action }).toEqual({
+          type: fromCalculator.ADD_DIGIT,
+          payload: digit,
+        });
+      });
+    });
+    it('should create operator action on [+-/] keys', () => {
+      const keys = ['/', 'x', '-', '+'];
+      keys.forEach(key => {
+        const action = fromCalculator.onTapKey(key);
+        expect({ ...action }).toEqual({
+          type: fromCalculator.ADD_OPERATOR,
+          payload: key === 'x' ? '*' : key,
+        });
+      });
+    });
+    it('should create clear action on (C) key', () => {
+      const action = fromCalculator.onTapKey('C');
+      expect({ ...action }).toEqual({ type: fromCalculator.CLEAR_SCREEN });
+    });
+    it('should create compute action on (=) key', () => {
+      const action = fromCalculator.onTapKey('=');
+      expect({ ...action }).toEqual({ type: fromCalculator.COMPUTE_RESULT });
+    });
+    it('should create comma action on (.) key', () => {
+      const action = fromCalculator.onTapKey('.');
+      expect({ ...action }).toEqual({ type: fromCalculator.ADD_COMMA });
+    });
+  });
 });

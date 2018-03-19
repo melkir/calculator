@@ -47,7 +47,7 @@ export function compute(operation: string): number {
   const isEmptyOperation = operation.length === 0;
 
   if (isEmptyOperation) {
-    return NaN;
+    return 0;
   }
 
   // strip anything other than digits, (), -+/* and .
