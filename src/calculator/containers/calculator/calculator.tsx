@@ -24,7 +24,6 @@ export function mapDispatchToProps(
   return {
     onTapKey: (key: string) => dispatch({ ...actions.onTapKey(key) }),
     onCompute: () => dispatch({ ...new actions.ComputeResult() }),
-    onToggleMonkeys: () => dispatch({ ...new actions.ToggleMonkeysStatus() }),
     // onToggleHistory: () => store.dispatch({...new actions.ToggleHistory()}),
   };
 }
