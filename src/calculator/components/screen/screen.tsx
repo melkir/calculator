@@ -8,7 +8,7 @@ export interface Props {
 
 export default function Screen({ operation = '', result = '' }: Props) {
   return (
-    <div className="flex flex-col">
+    <div id="screen" className="flex flex-col">
       <input
         id="operation"
         type="text"

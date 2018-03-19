@@ -13,7 +13,7 @@ describe('Button component', () => {
   });
 
   it('should renders the button with an attribute', () => {
-    expect(button.find('[data-btn="C"]').exists).toBeTruthy();
+    expect(button.find('[data-btn="C"]').exists()).toBeTruthy();
   });
 
   it('should renders the button with the correct custom class', () => {
