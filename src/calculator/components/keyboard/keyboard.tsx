@@ -15,7 +15,7 @@ export default class Keyboard extends React.Component<Props, object> {
   }
 
   handleKeyPress(event: KeyboardEvent) {
-    if (event.keyCode === SPACE_KEY) {
+    if (event.keyCode === SPACE_KEY || event.code === 'Space') {
       this.monkeys.toggleMonkeys();
     }
   }
