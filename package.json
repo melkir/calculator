@@ -2,22 +2,51 @@
   "name": "calculator",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://melkir.github.io/calculator",
   "dependencies": {
+    "expr-eval": "^1.2.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.11.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts-ts": "2.13.0"
+    "react-redux": "^5.0.7",
+    "react-scripts-ts": "2.13.0",
+    "redux": "^3.7.2"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,tsx,jsx,json,css}": [
+      "prettier --single-quote --trailing-comma --write",
+      "git add"
+    ]
   },
   "scripts": {
+    "precommit": "lint-staged",
+    "prestart": "tailwind build ./src/index.tailwind.css -c ./tailwind.js -o ./src/index.css",
     "start": "react-scripts-ts start",
+    "prebuild": "tailwind build ./src/index.tailwind.css -c ./tailwind.js -o ./src/index.css",
     "build": "react-scripts-ts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts-ts test --env=jsdom",
+    "test:cov": "react-scripts-ts test --env=jsdom --coverage",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.9",
+    "@types/enzyme-adapter-react-16": "^1.0.2",
     "@types/jest": "^22.2.0",
     "@types/node": "^9.4.7",
     "@types/react": "^16.0.40",
     "@types/react-dom": "^16.0.4",
+    "@types/react-redux": "^5.0.15",
+    "codecov": "^3.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "gh-pages": "^1.1.0",
+    "react-addons-test-utils": "^15.6.2",
+    "redux-devtools": "^3.4.1",
+    "tailwindcss": "^0.4.3",
     "typescript": "^2.7.2"
   }
 }
