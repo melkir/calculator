@@ -47,6 +47,6 @@
     "react-addons-test-utils": "^15.6.2",
     "redux-devtools": "^3.4.1",
     "tailwindcss": "^0.4.3",
-    "typescript": "^2.7.2"
+    "typescript": "^2.9.2"
   }
 }
