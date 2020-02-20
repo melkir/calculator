@@ -43,7 +43,7 @@
     "codecov": "^3.6.5",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "gh-pages": "^1.2.0",
+    "gh-pages": "^2.2.0",
     "react-addons-test-utils": "^15.6.2",
     "redux-devtools": "^3.5.0",
     "tailwindcss": "^0.7.4",
