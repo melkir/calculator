@@ -5,7 +5,7 @@
   "homepage": "http://melkir.github.io/calculator",
   "dependencies": {
     "expr-eval": "^1.2.3",
-    "husky": "^0.14.3",
+    "husky": "^4.2.5",
     "lint-staged": "^7.3.0",
     "prettier": "^1.19.1",
     "react": "^16.13.1",
