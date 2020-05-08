@@ -46,7 +46,7 @@
     "gh-pages": "^1.2.0",
     "react-addons-test-utils": "^15.6.2",
     "redux-devtools": "^3.5.0",
-    "tailwindcss": "^0.7.4",
+    "tailwindcss": "^1.4.6",
     "typescript": "^2.9.2"
   }
 }
