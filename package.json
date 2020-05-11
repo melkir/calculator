@@ -38,7 +38,7 @@
     "@types/jest": "^22.2.3",
     "@types/node": "^9.6.55",
     "@types/react": "^16.0.40",
-    "@types/react-dom": "^16.0.4",
+    "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^5.0.21",
     "codecov": "^3.6.5",
     "enzyme": "^3.3.0",
