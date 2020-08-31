@@ -42,7 +42,7 @@
     "@types/react-redux": "^5.0.21",
     "codecov": "^3.7.2",
     "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-adapter-react-16": "^1.15.4",
     "gh-pages": "^1.2.0",
     "react-addons-test-utils": "^15.6.2",
     "redux-devtools": "^3.6.1",
