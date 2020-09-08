@@ -33,7 +33,7 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
-    "@types/enzyme": "^3.1.9",
+    "@types/enzyme": "^3.10.6",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^22.2.3",
     "@types/node": "^9.6.58",
@@ -41,7 +41,7 @@
     "@types/react-dom": "^16.0.4",
     "@types/react-redux": "^5.0.21",
     "codecov": "^3.7.2",
-    "enzyme": "^3.3.0",
+    "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.4",
     "gh-pages": "^1.2.0",
     "react-addons-test-utils": "^15.6.2",
